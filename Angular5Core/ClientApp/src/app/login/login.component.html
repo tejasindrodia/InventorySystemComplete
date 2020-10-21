@@ -1,0 +1,172 @@
+<!--<div class="container" style="padding-top:60px;">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card-group">
+        <div class="card p-4">
+          <div class="card-body">
+            <form class="form-horizontal" class="login" [formGroup]="loginForm" (ngSubmit)="login()">
+              <div class="form-group row" [ngClass]="{'has-error': (loginForm.get('UserName').touched || loginForm.get('UserName').dirty) &&
+          !loginForm.get('UserName').valid }">
+                <label class="col-sm-3">
+                  <strong>UserName * </strong>
+                </label>
+                <div class="col-sm-8">
+                  <i style="position: relative;top: 24px;right: -300px;cursor: pointer;" class="fa fa-envelope"></i>
+                  <input type="text" formControlName="UserName" class="form-control form-control-sm"
+                    placeholder="Your UserName">
+                  <span class="text-danger" *ngIf="(loginForm.get('UserName').touched || loginForm.get('UserName').dirty) &&
+                  loginForm.get('UserName').errors">
+                    <span *ngIf="loginForm.get('UserName').errors.required">Please enter your UserName
+                      address.</span></span>
+                </div>
+              </div>
+
+              <div class="form-group row" [ngClass]="{'has-error': (loginForm.get('Password').touched || loginForm.get('Password').dirty)
+               &&
+          !loginForm.get('Password').valid }">
+                <label class="col-sm-3">
+                  <strong>Password * </strong>
+                </label>
+
+                <div class="col-sm-8">
+                  <input type="{{password ? 'text' : 'password' }}" formControlName="Password"
+                    class="form-control form-control-sm" placeholder="Your Password" required>
+                  <span class="form-control-password" style="float:right;"
+                    (click)="togglePassword()">{{password ? 'Hide': 'Show'}}</span>
+                  <span class="text-danger" *ngIf="(loginForm.get('Password').touched || loginForm.get('Password').dirty) &&
+loginForm.get('Password').errors">
+                    <span *ngIf="loginForm.get('Password').errors.required">Please enter your Password.</span>
+                    <span *ngIf="loginForm.get('Password').errors.minlength">The Password must be longer than 4
+                      characters.</span>
+                    <span *ngIf="loginForm.get('Password').errors.maxlength">The Password must be not longer than 30
+                      characters.</span>
+                  </span>
+                </div>
+              </div>
+              <div>
+                <p style="color:#E92626;font-size:20px;font-weight:normal" Class="success" align="left">
+                  {{errorMessage}}
+                </p>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-success active" [disabled]="!loginForm.valid"
+                  style="margin-right: 8px; cursor: pointer;">Login</button>
+                <a>Forgot Password ?</a>
+                <hr>
+                <button type="button" class="btn btn-success btn-lg btn-block px-12"
+                  [routerLink]="['/register']">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div align="center">
+  <h1> Login </h1>
+</div>
+<div class="column">
+  <!--<h2>Created by : {{myName}}</h2>-->
+
+</div>
+<hr style="height: 1px;color: #123455;background-color: #d55500;border: none;color: #d55500;" />
+<p *ngIf="!loginForm"><em>Loading Login Page please Wait ! ...</em></p>
+<table id="tblContainer" style='width: 99%;table-layout:fixed;'>
+  <tr>
+    <td>
+      <hr style="height: 1px;color: #123455;background-color: #d55500;border: none;color: #d55500;" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td>
+
+            <table style="color:#9F000F;font-size:large; padding :5px;" cellpadding="12" cellspacing="16">
+              <tr>
+              
+                <td><b>User Name: </b> </td>
+                <td>
+                  <input type="text" #UserName (ngModel)="sUserName" value="{{sUserName}}" required>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><b>Password: </b> </td>
+                <td>
+                  <input type="password" #Password (ngModel)="sPassword" value="{{sPassword}}" min="50" required>
+                  <div class="form-group row">
+                    <label class="col-sm-3">
+                      <strong>{{errorMessage}}</strong>
+                    </label>
+                  </div>
+                </td>
+               
+              </tr>
+            
+              <tr>
+                 
+                <td align="center" colspan="4">
+                  <button (click)=login(UserName.value,Password.value) style="background-color:#428d28;color:#FFFFFF;font-size:large;width:220px;
+                              border-color:#a2aabe;border-style:dashed;border-width:2px;">
+                    Login
+                  </button>
+                </td>
+                 
+              </tr>
+            </table>
+            <table  style="color:#9F000F;font-size:large; padding :5px;display:none" cellpadding="12" cellspacing="16">
+              <tr>
+                <td>
+                  <div class="form-group row">
+                    <label class="col-sm-3">
+                      <strong>UserName * </strong>
+                    </label>
+                    <div class="col-sm-8">
+                      <i style="position: relative;top: 24px;right: -300px;cursor: pointer;" class="fa fa-envelope"></i>
+                      <input type="text" #InventoryID (ngModel)="sInventoryID" value="{{sUserName}}" style="background-color:tan" class="form-control form-control-sm"
+                             placeholder="Your UserName">
+                      <span class="text-danger" *ngIf="!loginForm">
+                        <span *ngIf="loginForm.get('UserName').errors.required">
+                          Please enter your UserName
+                          address.
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+                <!--<td><b>User Name </b> </td>
+      <td>
+        <input type="number" #InventoryID (ngModel)="sInventoryID" value="{{sUserName}}" style="background-color:tan" readonly>
+      </td>-->
+                <td width="20">&nbsp;</td>
+                <td><b>Password: </b> </td>
+                <td>
+                  <input type="text" #ItemName (ngModel)="sItemName" value="{{sPassword}}" required>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <button (click)=login(InventoryID.value,ItemName.value) style="background-color:#428d28;color:#FFFFFF;font-size:large;width:220px;
+                              border-color:#a2aabe;border-style:dashed;border-width:2px;">
+                    Login
+                  </button>
+                </td>
+              </tr>
+
+            </table>
+</tr>
+        <tr>
+          <td colspan="2">
+            <hr style="height: 1px;color: #123455;background-color: #d55500;border: none;color: #d55500;" />
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+   
+</table>
